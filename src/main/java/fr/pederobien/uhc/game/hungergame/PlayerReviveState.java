@@ -38,11 +38,16 @@ public class PlayerReviveState extends AbstractState {
 			event.setKeepInventory(false);
 		else
 			event.setKeepInventory(true);
+		//verify the scoreboard state here
+		//HungerGameScoreboard.update()?
 	}
 	
 	@Override
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		PlayerManager.setGameModeOfPlayer(event.getPlayer(), GameMode.SURVIVAL);
 		event.setRespawnLocation(WorldManager.getRandomlyPoint().getLocation());
+		
+		//verify the scoreboard state here
+		//HungerGameScoreboard.update()?
 	}
 }

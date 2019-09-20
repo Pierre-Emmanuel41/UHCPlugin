@@ -34,5 +34,8 @@ public class PlayerDontReviveState extends AbstractState {
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		PlayerManager.setGameModeOfPlayer(event.getPlayer(), GameMode.SPECTATOR);
 		event.setRespawnLocation(WorldManager.getSpawnOnJoin());
+		
+		//verify the scoreboard state here
+		//HungerGameScoreboard.update()?
 	}
 }
