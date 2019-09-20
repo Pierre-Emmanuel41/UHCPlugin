@@ -103,12 +103,12 @@ public class HungerGame implements IHungerGame {
 	}
 
 	@Override
-	public void onPlayerDie(PlayerDeathEvent event) {
+	public void onPlayerDie(PlayerDeathEvent event) {//verify there is no need to update the scoreboard in this method
 		current.onPlayerDie(event);
 	}
 
 	@Override
-	public void onPlayerJoin(PlayerJoinEvent event) {
+	public void onPlayerJoin(PlayerJoinEvent event) {//verify there is no need to update the scoreboard in this method
 		current.onPlayerJoin(event);
 	}
 
@@ -118,12 +118,12 @@ public class HungerGame implements IHungerGame {
 	}
 
 	@Override
-	public void onPlayerQuit(PlayerQuitEvent event) {
+	public void onPlayerQuit(PlayerQuitEvent event) {//verify there is no need to update the scoreboard in this method
 		current.onPlayerQuit(event);
 	}
 
 	@Override
-	public void onPlayerRespawn(PlayerRespawnEvent event) {
+	public void onPlayerRespawn(PlayerRespawnEvent event) {//verify there is no need to update the scoreboard in this method
 		current.onPlayerRespawn(event);
 	}
 

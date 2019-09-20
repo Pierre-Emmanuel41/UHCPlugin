@@ -31,7 +31,7 @@ public class PlayerDontReviveState extends AbstractState {
 	}
 	
 	@Override
-	public void onPlayerRespawn(PlayerRespawnEvent event) {
+	public void onPlayerRespawn(PlayerRespawnEvent event) {//verify there is no need to update the scoreboard in this method
 		PlayerManager.setGameModeOfPlayer(event.getPlayer(), GameMode.SPECTATOR);
 		event.setRespawnLocation(WorldManager.getSpawnOnJoin());
 		

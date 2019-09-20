@@ -32,7 +32,7 @@ public class PlayerReviveState extends AbstractState {
 	}
 	
 	@Override
-	public void onPlayerDie(PlayerDeathEvent event) {
+	public void onPlayerDie(PlayerDeathEvent event) {//verify there is no need to update the scoreboard in this method
 		super.onPlayerDie(event);
 		if (event.getEntity().getKiller() instanceof Player)
 			event.setKeepInventory(false);
@@ -43,7 +43,7 @@ public class PlayerReviveState extends AbstractState {
 	}
 	
 	@Override
-	public void onPlayerRespawn(PlayerRespawnEvent event) {
+	public void onPlayerRespawn(PlayerRespawnEvent event) {//verify there is no need to update the scoreboard in this method
 		PlayerManager.setGameModeOfPlayer(event.getPlayer(), GameMode.SURVIVAL);
 		event.setRespawnLocation(WorldManager.getRandomlyPoint().getLocation());
 		
