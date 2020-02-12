@@ -106,6 +106,7 @@ public class HungerGameConfiguration extends AbstractConfiguration implements IH
 		builder.append("Border center : " + showBlock(getBorderCenter()) + "\n");
 		builder.append("Initial border diameter : " + getInitialBorderDiameter() + " blocks\n");
 		builder.append("Final border diameter : " + getFinalBorderDiameter() + " blocks\n");
+		builder.append("Game time : " + showTime(getGameTime()) + "\n");
 		builder.append("Fraction time : " + showTime(getFractionTime()) + "\n");
 		builder.append("Warning time : " + showTime(getWarningTime()) + "\n");
 		builder.append("Pvp time : " + showTime(getPvpTime()) + "\n");
