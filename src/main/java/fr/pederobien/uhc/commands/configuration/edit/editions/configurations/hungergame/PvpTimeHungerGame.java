@@ -15,7 +15,7 @@ import fr.pederobien.uhc.interfaces.IHungerGameConfiguration;
 public class PvpTimeHungerGame extends AbstractConfEdition<IHungerGameConfiguration> {
 
 	public PvpTimeHungerGame() {
-		super("pvp", MessageCode.PVP_TIME_HUNGER_GAME_EXPLANATION);
+		super("pvptime", MessageCode.PVP_TIME_HUNGER_GAME_EXPLANATION);
 	}
 
 	@Override
