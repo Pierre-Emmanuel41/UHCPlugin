@@ -2,6 +2,7 @@ package fr.pederobien.uhc.commands.configuration.edit.editions.configurations.te
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,13 +23,19 @@ public class RemovePlayer<T extends IConfiguration> extends AbstractTeamEditions
 	public void edit(String[] args) {
 		List<Player> players = new ArrayList<Player>();
 		String playerNames = "";
+		List<Player> registeredPlayers = get().getPlayersRegistered().map(n -> PlayerManager.getPlayer(n)).collect(Collectors.toList());
 		for (int i = 0; i < args.length; i++) {
+			String name = args[i];
 			try {
-				Player player = PlayerManager.getPlayer(args[i]);
+				Player player = PlayerManager.getPlayer(name);
+				if (!registeredPlayers.contains(player)) {
+					sendMessage(MessageCode.TEAM_REMOVEPLAYER_PLAYER_NOT_IN_TEAM, name);
+					return;
+				}
 				playerNames += player.getName() + " ";
 				players.add(player);
 			} catch (NullPointerException e) {
-				sendMessage(MessageCode.TEAM_BAD_PLAYER, args[i]);
+				sendMessage(MessageCode.TEAM_BAD_PLAYER, name);
 				return;
 			}
 		}

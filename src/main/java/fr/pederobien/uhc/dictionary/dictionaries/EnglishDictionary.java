@@ -878,6 +878,11 @@ public class EnglishDictionary extends AbstractDictionary {
 			public String getMessage(String... args) {
 				return "Players " + args[0] + " have been removed from their team";
 			}
+		}).registerMessage(new AbstractPlayerMessage(MessageCode.TEAM_REMOVEPLAYER_PLAYER_NOT_IN_TEAM) {
+			@Override
+			public String getMessage(String... args) {
+				return "Cannot remove " + args[0] + " from its team, this player is not in a team";
+			}
 		});
 
 		registerMessage(new AbstractPlayerMessage(MessageCode.TEAM_REMOVETEAM_EXPLANATION) {

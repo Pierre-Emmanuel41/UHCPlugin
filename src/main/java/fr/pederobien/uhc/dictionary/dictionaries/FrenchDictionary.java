@@ -878,6 +878,11 @@ public class FrenchDictionary extends AbstractDictionary {
 			public String getMessage(String... args) {
 				return "Les joueurs " + args[0] + " ont été retirés de leurs équipes";
 			}
+		}).registerMessage(new AbstractPlayerMessage(MessageCode.TEAM_REMOVEPLAYER_PLAYER_NOT_IN_TEAM) {
+			@Override
+			public String getMessage(String... args) {
+				return "Impossible d'enlever " + args[0] + " de son équipe, ce joueur n'appartient à aucune équipe";
+			}
 		});
 
 		registerMessage(new AbstractPlayerMessage(MessageCode.TEAM_REMOVETEAM_EXPLANATION) {
