@@ -198,15 +198,11 @@ public class WorldManager {
 	}
 
 	public static Location getSpawnOnJoin() {
-		return world.getSpawnLocation();
+		return spawn != null ? spawn.getPlayerSpawn().getLocation() : getHighestBlockYAt(0, 0).getLocation();
 	}
 
 	public static void setSpawn(IUnmodifiableSpawn spawn) {
 		WorldManager.spawn = spawn;
-		if (spawn != null)
-			world.setSpawnLocation(spawn.getPlayerSpawn().getLocation());
-		else
-			world.setSpawnLocation(getHighestBlockYAt(0, 0).getLocation());
 	}
 
 	public static void removeSpawn() {
