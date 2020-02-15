@@ -57,7 +57,7 @@ public class PlayerDontReviveState extends AbstractHungerGameState {
 		sendTitle(EColor.DARK_RED, MessageCode.MOVING_BORDER);
 		WorldManager.moveBorder(getConfiguration().getFinalBorderDiameter(),
 				getConfiguration().getInitialBorderDiameter().longValue() / getConfiguration().getBorderSpeed().longValue());
-		PlayerManager.killPlayers(WorldManager.getPlayersInWorld(WorldManager.END_WORLD, WorldManager.NETHER_WORLD));
+		PlayerManager.killPlayersInWorlds(WorldManager.END_WORLD, WorldManager.NETHER_WORLD);
 		game.setCurrentState(game.getHungerGame());
 	}
 }
