@@ -1,7 +1,9 @@
 package fr.pederobien.uhc.managers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -252,7 +254,10 @@ public class WorldManager {
 	}
 
 	public static Stream<Player> getPlayersInWorld(World... worlds) {
-		return PlayerManager.getPlayers().filter(p -> Stream.of(worlds).anyMatch(w -> p.getLocation().getWorld().equals(w)));
+		List<Player> players = new ArrayList<Player>();
+		for (World world : worlds)
+			players.addAll(world.getPlayers());
+		return players.stream();
 	}
 
 	public static <T> void setGameRule(GameRule<T> gameRule, T value) {
