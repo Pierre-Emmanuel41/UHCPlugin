@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -269,6 +270,10 @@ public class PlayerManager {
 	}
 
 	public static void killPlayers(Stream<Player> players) {
-		setHealthOfPlayers(players, 0);
+		players.forEach(p -> killPlayer(p));
+	}
+
+	public static void killPlayersInWorlds(World... worlds) {
+		killPlayers(WorldManager.getPlayersInWorld(worlds));
 	}
 }
