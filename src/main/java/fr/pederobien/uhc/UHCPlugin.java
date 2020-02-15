@@ -83,7 +83,7 @@ public class UHCPlugin extends JavaPlugin implements IObsListener, IObsGame {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		UHCPlayer.register(event.getPlayer());
 		PlayerManager.teleporte(event.getPlayer(), WorldManager.getSpawnOnJoin());
-		movePlayer(event.getPlayer());
+		updatePlayerMode(event.getPlayer());
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class UHCPlugin extends JavaPlugin implements IObsListener, IObsGame {
 	@Override
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		event.setRespawnLocation(WorldManager.getSpawnOnJoin());
-		movePlayer(event.getPlayer());
+		updatePlayerMode(event.getPlayer());
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class UHCPlugin extends JavaPlugin implements IObsListener, IObsGame {
 
 	}
 
-	private void movePlayer(Player player) {
+	private void updatePlayerMode(Player player) {
 		if (BukkitManager.getOperators().contains(player))
 			PlayerManager.setGameModeOfPlayer(player, GameMode.CREATIVE);
 		else {
