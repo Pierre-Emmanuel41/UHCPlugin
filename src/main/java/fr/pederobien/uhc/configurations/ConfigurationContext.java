@@ -31,6 +31,7 @@ public class ConfigurationContext implements IConfigurationContext {
 		if (getCurrentConfiguration() != null)
 			getGame().removeObserver(PluginDeposit.plugin);
 		this.configuration = configuration;
+		System.out.println("Configuration context : Changing current configuration : " + configuration.hashCode());
 		TeamsManager.setCurrentConfiguration(getCurrentConfiguration());
 		getGame().addObserver(PluginDeposit.plugin);
 	}
@@ -42,6 +43,7 @@ public class ConfigurationContext implements IConfigurationContext {
 
 	@Override
 	public boolean initiate() {
+		System.out.println("Configuration context : Initiate");
 		return getGame().initiate();
 	}
 

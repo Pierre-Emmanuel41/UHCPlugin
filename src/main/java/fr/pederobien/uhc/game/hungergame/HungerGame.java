@@ -45,6 +45,7 @@ public class HungerGame extends AbstractGame implements IHungerGame {
 
 	@Override
 	public IHungerGameState setCurrentState(IHungerGameState current) {
+		System.out.println("Hunger game : changing state from : " + this.current.getClass().getSimpleName() + " to " + current.getClass().getSimpleName());
 		return this.current = current;
 	}
 
@@ -80,6 +81,7 @@ public class HungerGame extends AbstractGame implements IHungerGame {
 
 	@Override
 	public boolean initiate() {
+		System.out.println("Hunger game : Initiate, current state : " + current.getClass().getSimpleName());
 		return current.initiate();
 	}
 

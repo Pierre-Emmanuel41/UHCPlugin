@@ -15,6 +15,7 @@ public class InitialState extends AbstractHungerGameState {
 
 	@Override
 	public boolean initiate() {
+		System.out.println("InitialState : initiate");
 		if (Duration.between(getConfiguration().getFractionTime(), getConfiguration().getGameTime()).isNegative()) {
 			message = MessageCode.FRACTION_TIME_LESS_THAN_GAME_TIME;
 			return false;
