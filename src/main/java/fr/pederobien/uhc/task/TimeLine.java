@@ -4,39 +4,52 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import fr.pederobien.uhc.observers.IObsTimeLine;
 import fr.pederobien.uhc.observers.IObsTimeTask;
+import fr.pederobien.uhc.observers.ITimeLineObservable;
 
-public class TimeLine implements IObsTimeTask {
-	private HashMap<LocalTime, List<IObsTimeLine>> map;
+public class TimeLine implements ITimeLineObservable, IObsTimeTask {
+	private Map<LocalTime, List<IObsTimeLine>> observers;
 
 	public TimeLine(TimeTask task) {
-		map = new HashMap<>();
+		observers = new HashMap<>();
 		task.addObserver(this);
 	}
 
-	public void addObserver(LocalTime time, IObsTimeLine function) {
-		if (map.containsKey(time))
-			map.get(time).add(function);
+	@Override
+	public void addObserver(LocalTime time, IObsTimeLine obs) {
+		if (observers.containsKey(time))
+			observers.get(time).add(obs);
 		else {
 			List<IObsTimeLine> list = new ArrayList<IObsTimeLine>();
-			list.add(function);
-			map.put(time, list);
+			list.add(obs);
+			observers.put(time, list);
 		}
 	}
 
-	public void removeObserver(LocalTime time, IObsTimeLine function) {
-		map.get(time).remove(function);
-		if (map.get(time).size() == 0)
-			map.remove(time);
+	@Override
+	public void removeObserver(LocalTime time, IObsTimeLine obs) {
+		observers.get(time).remove(obs);
+		if (observers.get(time).size() == 0)
+			observers.remove(time);
 	}
 
 	@Override
 	public void timeChanged(TimeTask task) {
-		List<IObsTimeLine> list = map.get(task.getIncreasingTime());
-		if (list != null)
-			for (IObsTimeLine function : list)
-				function.time(task.getIncreasingTime());
+		notifyObservers(task);
+	}
+
+	@Override
+	public void notifyObservers(TimeTask task) {
+		List<IObsTimeLine> list = observers.get(task.getIncreasingTime());
+
+		// When there are no observers
+		if (list == null)
+			return;
+
+		for (IObsTimeLine obs : list)
+			obs.time(task.getIncreasingTime());
 	}
 }
