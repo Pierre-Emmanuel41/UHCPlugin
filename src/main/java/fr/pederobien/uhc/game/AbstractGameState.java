@@ -47,27 +47,27 @@ public abstract class AbstractGameState<T extends IUnmodifiableConfiguration> im
 
 	@Override
 	public boolean initiate() {
-		throw new GameStateException("This method cannot be called by this state");
+		throw new GameStateException(getExceptionMessage());
 	}
 
 	@Override
 	public void start() {
-		throw new GameStateException("This method cannot be called by this state");
+		throw new GameStateException(getExceptionMessage());
 	}
 
 	@Override
 	public void pause() {
-		throw new GameStateException("This method cannot be called by this state");
+		throw new GameStateException(getExceptionMessage());
 	}
 
 	@Override
 	public void relaunch() {
-		throw new GameStateException("This method cannot be called by this state");
+		throw new GameStateException(getExceptionMessage());
 	}
 
 	@Override
 	public void stop() {
-		throw new GameStateException("This method cannot be called by this state");
+		throw new GameStateException(getExceptionMessage());
 	}
 
 	@Override
@@ -204,5 +204,9 @@ public abstract class AbstractGameState<T extends IUnmodifiableConfiguration> im
 			player.setFoodLevel(food);
 			PlayerManager.teleporte(player, location);
 		}
+	}
+
+	private String getExceptionMessage() {
+		return "This method cannot be called by this state (" + getClass().getSimpleName() + ")";
 	}
 }
