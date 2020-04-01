@@ -161,7 +161,7 @@ public class PlayerManager {
 	}
 
 	public static void giveEffects(Stream<Player> players, Stream<PotionEffect> effects) {
-		players.forEach(p -> effects.forEach(e -> giveEffect(p, e)));
+		players.peek(p -> effects.peek(e -> giveEffect(p, e)));
 	}
 
 	public static PotionEffect createEffect(PotionEffectType type, int duration, int amplifier, boolean ambient, boolean particles) {
